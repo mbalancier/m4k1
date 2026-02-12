@@ -1,0 +1,22 @@
+column_name,data_type,description,notes
+id,integer,Unique identifier for each alert,Primary key from MAPMF database
+title,string,Brief headline describing the incident,May contain journalist names and incident type
+date,date (YYYY-MM-DD),Date when the incident occurred,Incident date (not publication date)
+year,integer,Year extracted from the incident date,Range: 2014-2026
+month,integer,Month extracted from the incident date (1-12),1=January through 12=December
+day_of_week,string,Name of the day when incident occurred,Full day name in English
+country,string,Country where the incident took place,45 unique countries in dataset
+region_level_1,string,First administrative region (usually country name or major region),Sometimes matches country; sometimes regional designation
+region_level_2,string,Second administrative region (state/province/city),More specific geographic location
+primary_incident_type,string,Main/first type of incident from the classification list,First item from type_of_incident list; useful for primary categorization
+incident_type_count,integer,Number of incident types associated with the alert,Indicates complexity/severity of incident
+type_of_incident,string (pipe-separated),Full list of all incident type classifications,"Multiple values separated by ' | '; includes categories like Physical assault, Legal incident, Harassment, etc."
+primary_source,string,Main/first source of the incident,First item from source_of_incident list
+source_of_incident,string (pipe-separated),Full list of sources/perpetrators of the incident,Multiple values separated by ' | '; indicates who was responsible
+context_of_incident,string (pipe-separated),Context/setting where the incident occurred,Multiple values separated by ' | '; describes the environment of the incident
+region_names,string (pipe-separated),Full geographic hierarchy from EU membership status to local region,Hierarchical: EU status | Country | Region | City
+content,string,Full text description of the incident,Detailed narrative of what happened; may contain links to related alerts
+content_length,integer,Character count of the content field,Useful for filtering by detail level
+published_at_date,date (YYYY-MM-DD),Date when the alert was published on MAPMF,Publication date (may differ from incident date)
+_geo_lat,float,Latitude coordinate of the incident location,WGS84 decimal degrees
+_geo_lng,float,Longitude coordinate of the incident location,WGS84 decimal degrees
