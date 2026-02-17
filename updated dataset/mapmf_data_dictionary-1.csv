@@ -1,0 +1,35 @@
+column_name,data_type,description,notes
+id,integer,Unique identifier for each alert,Primary key from MAPMF database
+title,string,Brief headline describing the incident,May contain journalist names and incident type
+date,date (YYYY-MM-DD),Date when the incident occurred,Incident date (not publication date)
+year,integer,Year extracted from the incident date,Range: 2014-2026
+month,integer,Month extracted from the incident date (1-12),1=January through 12=December
+day_of_week,string,Name of the day when incident occurred,Full day name in English
+country,string,Country where the incident took place,45 unique countries in dataset
+region_level_1,string,First administrative region (usually country name or major region),Sometimes matches country; sometimes regional designation
+region_level_2,string,Second administrative region (state/province/city),More specific geographic location
+primary_incident_type,string,Main/first type of incident from the classification list,First item from type_of_incident list; useful for primary categorization
+incident_type_count,integer,Number of incident types associated with the alert,Indicates complexity/severity of incident
+type_of_incident,string (pipe-separated),Full list of all incident type classifications,"Multiple values separated by ' | '; includes categories like Physical assault, Legal incident, Harassment, etc."
+primary_source,string,Main/first source of the incident,First item from source_of_incident list
+source_of_incident,string (pipe-separated),Full list of sources/perpetrators of the incident,Multiple values separated by ' | '; indicates who was responsible
+context_of_incident,string (pipe-separated),Context/setting where the incident occurred,Multiple values separated by ' | '; describes the environment of the incident
+region_names,string (pipe-separated),Full geographic hierarchy from EU membership status to local region,Hierarchical: EU status | Country | Region | City
+primary_gender,string,Primary/first gender of journalist(s) involved,"Values: Man, Woman, not applicable, no data collected, Unknown gender, Non-binary"
+gender_male_count,integer,Count of male journalists/victims in the incident,Derived from gender list
+gender_female_count,integer,Count of female journalists/victims in the incident,Derived from gender list
+gender_other_count,integer,Count of journalists with other/unknown gender,Excludes Man/Woman/not applicable
+gender,string (pipe-separated),Full list of genders of all journalists/victims involved,Multiple values separated by ' | '
+primary_victim_type,string,Main/first type of victim attacked,First item from who_was_attacked list
+who_was_attacked,string (pipe-separated),Full list of victim types,"Multiple values separated by ' | '; e.g., Journalist(s)/media worker(s), Media company or publishing house"
+attacked_count,integer or string,Number of people/entities attacked,"Integer for specific counts; 'general_law' for legislative threats affecting journalists in general"
+type_of_journalist_or_media_actor,string (pipe-separated),Professional role(s) of the journalist(s) involved,"Multiple values separated by ' | '; e.g., Journalist/editor, Photographer/camera operator"
+employment_status,string (pipe-separated),Employment status of the journalist(s) involved,"Multiple values separated by ' | '; e.g., Employed, Freelancer, Unknown employment status"
+subjects_count,integer,Number of subjects (individuals/entities) involved in the incident,Count of items in subjects array
+journalist_types,string (pipe-separated),Types of journalists extracted from subjects,Filtered to show only journalist kinds from subjects
+subjects,JSON string,Detailed structured data about each subject involved,"JSON array with objects containing: kind, amount, who, gender, employment_status, type"
+content,string,Full text description of the incident,Detailed narrative of what happened; may contain links to related alerts
+content_length,integer,Character count of the content field,Useful for filtering by detail level
+published_at_date,date (YYYY-MM-DD),Date when the alert was published on MAPMF,Publication date (may differ from incident date)
+_geo_lat,float,Latitude coordinate of the incident location,WGS84 decimal degrees
+_geo_lng,float,Longitude coordinate of the incident location,WGS84 decimal degrees
